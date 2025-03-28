@@ -1,0 +1,15 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       id - id $                               Shift to 1
+2     0 1                           $ id                                    - id $                                  Reduce F → •id
+3     0 4                           $ F                                     - id $                                  Reduce T → •F
+4     0 5                           $ T                                     - id $                                  Reduce E → •T
+5     0 3                           $ E                                     - id $                                  Shift to 8
+6     0 3 8                         $ E -                                   id $                                    Shift to 1
+7     0 3 8 1                       $ E - id                                $                                       Reduce F → •id
+8     0 3 8 4                       $ E - F                                 $                                       Reduce T → •F
+9     0 3 8 13                      $ E - T                                 $                                       Reduce E → •E-T
+10    0 3                           $ E                                     $                                       Accept

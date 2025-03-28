@@ -1,0 +1,20 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       id / id - id $                          Shift to 1
+2     0 1                           $ id                                    / id - id $                             Reduce F → •id
+3     0 4                           $ F                                     / id - id $                             Reduce T → •F
+4     0 5                           $ T                                     / id - id $                             Shift to 10
+5     0 5 10                        $ T /                                   id - id $                               Shift to 1
+6     0 5 10 1                      $ T / id                                - id $                                  Reduce F → •id
+7     0 5 10 4                      $ T / F                                 - id $                                  Reduce T → •F
+8     0 5 10 15                     $ T / T                                 - id $                                  Reduce T → •T/T
+9     0 5                           $ T                                     - id $                                  Reduce E → •T
+10    0 3                           $ E                                     - id $                                  Shift to 8
+11    0 3 8                         $ E -                                   id $                                    Shift to 1
+12    0 3 8 1                       $ E - id                                $                                       Reduce F → •id
+13    0 3 8 4                       $ E - F                                 $                                       Reduce T → •F
+14    0 3 8 13                      $ E - T                                 $                                       Reduce E → •E-T
+15    0 3                           $ E                                     $                                       Accept

@@ -1,0 +1,25 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       id + ( id * id ) $                      Shift to 1
+2     0 1                           $ id                                    + ( id * id ) $                         Reduce F → •id
+3     0 4                           $ F                                     + ( id * id ) $                         Reduce T → •F
+4     0 5                           $ T                                     + ( id * id ) $                         Reduce E → •T
+5     0 3                           $ E                                     + ( id * id ) $                         Shift to 7
+6     0 3 7                         $ E +                                   ( id * id ) $                           Shift to 2
+7     0 3 7 2                       $ E + (                                 id * id ) $                             Shift to 1
+8     0 3 7 2 1                     $ E + ( id                              * id ) $                                Reduce F → •id
+9     0 3 7 2 4                     $ E + ( F                               * id ) $                                Reduce T → •F
+10    0 3 7 2 5                     $ E + ( T                               * id ) $                                Shift to 9
+11    0 3 7 2 5 9                   $ E + ( T *                             id ) $                                  Shift to 1
+12    0 3 7 2 5 9 1                 $ E + ( T * id                          ) $                                     Reduce F → •id
+13    0 3 7 2 5 9 4                 $ E + ( T * F                           ) $                                     Reduce T → •F
+14    0 3 7 2 5 9 14                $ E + ( T * T                           ) $                                     Reduce T → •T*T
+15    0 3 7 2 5                     $ E + ( T                               ) $                                     Reduce E → •T
+16    0 3 7 2 6                     $ E + ( E                               ) $                                     Shift to 11
+17    0 3 7 2 6 11                  $ E + ( E )                             $                                       Reduce F → •(E)
+18    0 3 7 4                       $ E + F                                 $                                       Reduce T → •F
+19    0 3 7 12                      $ E + T                                 $                                       Reduce E → •E+T
+20    0 3                           $ E                                     $                                       Accept

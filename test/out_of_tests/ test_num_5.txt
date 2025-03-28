@@ -1,0 +1,11 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       id * * id $                             Shift to 1
+2     0 1                           $ id                                    * * id $                                Reduce F → •id
+3     0 4                           $ F                                     * * id $                                Reduce T → •F
+4     0 5                           $ T                                     * * id $                                Shift to 9
+5     0 5 9                         $ T *                                   * id $                                  ERROR: No action for state 9 and symbol *
+ ERROR: No action found

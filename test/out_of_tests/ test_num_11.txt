@@ -1,0 +1,7 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       $                                       ERROR: No action for state 0 and symbol $
+ ERROR: No action found

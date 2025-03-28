@@ -1,0 +1,35 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       ( id + id - id ) * id / id $            Shift to 2
+2     0 2                           $ (                                     id + id - id ) * id / id $              Shift to 1
+3     0 2 1                         $ ( id                                  + id - id ) * id / id $                 Reduce F → •id
+4     0 2 4                         $ ( F                                   + id - id ) * id / id $                 Reduce T → •F
+5     0 2 5                         $ ( T                                   + id - id ) * id / id $                 Reduce E → •T
+6     0 2 6                         $ ( E                                   + id - id ) * id / id $                 Shift to 7
+7     0 2 6 7                       $ ( E +                                 id - id ) * id / id $                   Shift to 1
+8     0 2 6 7 1                     $ ( E + id                              - id ) * id / id $                      Reduce F → •id
+9     0 2 6 7 4                     $ ( E + F                               - id ) * id / id $                      Reduce T → •F
+10    0 2 6 7 12                    $ ( E + T                               - id ) * id / id $                      Reduce E → •E+T
+11    0 2 6                         $ ( E                                   - id ) * id / id $                      Shift to 8
+12    0 2 6 8                       $ ( E -                                 id ) * id / id $                        Shift to 1
+13    0 2 6 8 1                     $ ( E - id                              ) * id / id $                           Reduce F → •id
+14    0 2 6 8 4                     $ ( E - F                               ) * id / id $                           Reduce T → •F
+15    0 2 6 8 13                    $ ( E - T                               ) * id / id $                           Reduce E → •E-T
+16    0 2 6                         $ ( E                                   ) * id / id $                           Shift to 11
+17    0 2 6 11                      $ ( E )                                 * id / id $                             Reduce F → •(E)
+18    0 4                           $ F                                     * id / id $                             Reduce T → •F
+19    0 5                           $ T                                     * id / id $                             Shift to 9
+20    0 5 9                         $ T *                                   id / id $                               Shift to 1
+21    0 5 9 1                       $ T * id                                / id $                                  Reduce F → •id
+22    0 5 9 4                       $ T * F                                 / id $                                  Reduce T → •F
+23    0 5 9 14                      $ T * T                                 / id $                                  Reduce T → •T*T
+24    0 5                           $ T                                     / id $                                  Shift to 10
+25    0 5 10                        $ T /                                   id $                                    Shift to 1
+26    0 5 10 1                      $ T / id                                $                                       Reduce F → •id
+27    0 5 10 4                      $ T / F                                 $                                       Reduce T → •F
+28    0 5 10 15                     $ T / T                                 $                                       Reduce T → •T/T
+29    0 5                           $ T                                     $                                       Reduce E → •T
+30    0 3                           $ E                                     $                                       Accept

@@ -1,0 +1,28 @@
+
+Parsing steps:
+Step  Stack (states)                Stack (symbols)                         Input                                   Action
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1     0                             $                                       ( ( id + id ) * ( id - ? ) ) $          Shift to 2
+2     0 2                           $ (                                     ( id + id ) * ( id - ? ) ) $            Shift to 2
+3     0 2 2                         $ ( (                                   id + id ) * ( id - ? ) ) $              Shift to 1
+4     0 2 2 1                       $ ( ( id                                + id ) * ( id - ? ) ) $                 Reduce F → •id
+5     0 2 2 4                       $ ( ( F                                 + id ) * ( id - ? ) ) $                 Reduce T → •F
+6     0 2 2 5                       $ ( ( T                                 + id ) * ( id - ? ) ) $                 Reduce E → •T
+7     0 2 2 6                       $ ( ( E                                 + id ) * ( id - ? ) ) $                 Shift to 7
+8     0 2 2 6 7                     $ ( ( E +                               id ) * ( id - ? ) ) $                   Shift to 1
+9     0 2 2 6 7 1                   $ ( ( E + id                            ) * ( id - ? ) ) $                      Reduce F → •id
+10    0 2 2 6 7 4                   $ ( ( E + F                             ) * ( id - ? ) ) $                      Reduce T → •F
+11    0 2 2 6 7 12                  $ ( ( E + T                             ) * ( id - ? ) ) $                      Reduce E → •E+T
+12    0 2 2 6                       $ ( ( E                                 ) * ( id - ? ) ) $                      Shift to 11
+13    0 2 2 6 11                    $ ( ( E )                               * ( id - ? ) ) $                        Reduce F → •(E)
+14    0 2 4                         $ ( F                                   * ( id - ? ) ) $                        Reduce T → •F
+15    0 2 5                         $ ( T                                   * ( id - ? ) ) $                        Shift to 9
+16    0 2 5 9                       $ ( T *                                 ( id - ? ) ) $                          Shift to 2
+17    0 2 5 9 2                     $ ( T * (                               id - ? ) ) $                            Shift to 1
+18    0 2 5 9 2 1                   $ ( T * ( id                            - ? ) ) $                               Reduce F → •id
+19    0 2 5 9 2 4                   $ ( T * ( F                             - ? ) ) $                               Reduce T → •F
+20    0 2 5 9 2 5                   $ ( T * ( T                             - ? ) ) $                               Reduce E → •T
+21    0 2 5 9 2 6                   $ ( T * ( E                             - ? ) ) $                               Shift to 8
+22    0 2 5 9 2 6 8                 $ ( T * ( E -                           ? ) ) $                                 ERROR: No action for state 8 and symbol ?
+ ERROR: No action found
