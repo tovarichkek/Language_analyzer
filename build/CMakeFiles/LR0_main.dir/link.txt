@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/LR0_main.dir/src/main.cpp.o CMakeFiles/LR0_main.dir/src/lex.yy.cc.o CMakeFiles/LR0_main.dir/src/analys.cpp.o -o LR0_main 

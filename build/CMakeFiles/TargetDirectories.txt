@@ -1,4 +1,0 @@
-/home/mmm/Language_analyzer/build/CMakeFiles/LR0_main.dir
-/home/mmm/Language_analyzer/build/CMakeFiles/LR0_test.dir
-/home/mmm/Language_analyzer/build/CMakeFiles/edit_cache.dir
-/home/mmm/Language_analyzer/build/CMakeFiles/rebuild_cache.dir

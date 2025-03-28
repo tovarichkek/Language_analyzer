@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/LR0_test.dir/src/analys.cpp.o CMakeFiles/LR0_test.dir/test/test.cpp.o CMakeFiles/LR0_test.dir/src/lex.yy.cc.o -o LR0_test  /usr/lib/x86_64-linux-gnu/libgtest.a /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a 
